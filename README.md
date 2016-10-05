@@ -2,16 +2,26 @@
 
 > A pullstream "webdriver" for interacting with changes to the dom.
 
-When you're testing client side apps like [react]() or [inu](), finding and interacting with elements that appear dynamically is painful. pull-dom-driver uses a [pull-stream]() source of dom mutations from [mutation observer]() to `find(".list")` and `click("#go-button")` on elements once they're actually in the dom.  
+When you're testing client side apps like [react](https://facebook.github.io/react/) or [inu](https://github.com/ahdinosaur/inu), finding and interacting with elements that appear dynamically is painful. pull-dom-driver uses a [pull-stream](https://github.com/ahdinosaur/inu) source of dom mutations from [pull-dom-mutants](http://pull-stream.github.io/#pull-dom-mutants) to `find(".list")` and `click("#go-button")` on elements once they're actually in the dom.  
 
 ## Usage
 
-Let's do X:
+Let's find an element that isn't in the dom yet but will be:
 
 ```js
-var pullDomDriver = require('pull-dom-driver')
+var createDomStream = require('pull-dom-driver')
+var pull = require('pull-stream')
 
-console.log('hello warld')
+var dom = createDomStream(document, window)
+pull(
+  dom.find('#mutant')
+  pull.drain((elem) => console.log(`I found this: ${elem}`))
+)
+
+var myDiv = document.createElement('div')
+myDiv.id = "mutant" 
+document.body.appendChild(myDiv)
+-> "I found this: ..."
 ```
 
 This will output
