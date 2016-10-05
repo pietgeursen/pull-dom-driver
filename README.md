@@ -2,7 +2,7 @@
 
 > A pullstream "webdriver" for interacting with changes to the dom.
 
-background details relevant to understanding what this module does
+When you're testing client side apps like [react]() or [inu](), finding and interacting with elements that appear dynamically is painful. pull-dom-driver uses a [pull-stream]() source of dom mutations from [mutation observer]() to `find(".list")` and `click("#go-button")` on elements once they're actually in the dom.  
 
 ## Usage
 
