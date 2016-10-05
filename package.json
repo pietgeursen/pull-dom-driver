@@ -1,0 +1,26 @@
+{
+  "name": "pull-dom-driver",
+  "version": "1.0.0",
+  "description": "A pullstream \"webdriver\" for interacting with changes to the dom.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/pietgeursen/pull-dom-driver.git"
+  },
+  "keywords": [
+    "pull-stream",
+    "dom",
+    "css-selector",
+    "dom-mutation",
+    "pull-dom-mutants"
+  ],
+  "author": "pietgeursen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pietgeursen/pull-dom-driver/issues"
+  },
+  "homepage": "https://github.com/pietgeursen/pull-dom-driver#readme"
+}
