@@ -47,13 +47,13 @@ Takes a `cssSelectorString` for the element(s) you'd like to find.
 Returns a pull-stream source of elements that have been in the dom.
 Note that if there is an element that matches the selector when the stream is created it will be emitted by the stream first.
 
-### domStream.find(cssSelectorString)
+### domStream.click(cssSelectorString)
 Takes a `cssSelectorString` for the element(s) you'd like to click on.
 Returns a pull-stream source of elements that have been clicked in the dom.
 Note that if there is an element(s) that matches the selector when the stream is created it will be emitted by the stream first.
 
-### domStream.mutation()
-Returns a pull-stream source of dom mutations from [pull-dom-mutants]()
+### domStream.mutations()
+Returns a pull-stream source of dom mutations from [pull-dom-mutants](http://pull-stream.github.io/#pull-dom-mutants)
 
 ## Install
 
