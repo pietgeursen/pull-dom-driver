@@ -35,7 +35,6 @@ This will output
 ### var createDomStream = require('pull-dom-driver')
 ### createDomStream(rootElement, window)
 Takes the `rootElement` on which you'd like to obseve changes. `window` is required.
-```
 
 ### var domStream = createDomStream(el, window)
 Returns an object with the following keys:
@@ -59,7 +58,6 @@ Returns a pull-stream source of dom mutations from [pull-dom-mutants]()
 ## Install
 
 With [npm](https://npmjs.org/) installed, run
-
 ```
 $ npm install pull-dom-driver
 ```
