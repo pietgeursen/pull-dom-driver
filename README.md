@@ -9,34 +9,52 @@ When you're testing client side apps like [react](https://facebook.github.io/rea
 Let's find an element that isn't in the dom yet but will be:
 
 ```js
+//in the browser
 var createDomStream = require('pull-dom-driver')
 var pull = require('pull-stream')
 
-var dom = createDomStream(document, window)
+var domStream = createDomStream(document, window)
 pull(
-  dom.find('#mutant')
+  domStream.find('#mutant')
   pull.drain((elem) => console.log(`I found this: ${elem}`))
 )
 
 var myDiv = document.createElement('div')
 myDiv.id = "mutant" 
 document.body.appendChild(myDiv)
--> "I found this: ..."
 ```
 
 This will output
 
 ```
-hello warld
+"I found this: [object HTMLDivElement]"
 ```
 
 ## API
 
-```js
-var pullDomDriver = require('pull-dom-driver')
+### var createDomStream = require('pull-dom-driver')
+### createDomStream(rootElement, window)
+Takes the `rootElement` on which you'd like to obseve changes. `window` is required.
 ```
 
-See [api_formatting.md](api_formatting.md) for tips.
+### var domStream = createDomStream(el, window)
+Returns an object with the following keys:
+- `mutations` 
+- `find` 
+- `click` 
+
+### domStream.find(cssSelectorString)
+Takes a `cssSelectorString` for the element(s) you'd like to find.
+Returns a pull-stream source of elements that have been in the dom.
+Note that if there is an element that matches the selector when the stream is created it will be emitted by the stream first.
+
+### domStream.find(cssSelectorString)
+Takes a `cssSelectorString` for the element(s) you'd like to click on.
+Returns a pull-stream source of elements that have been clicked in the dom.
+Note that if there is an element(s) that matches the selector when the stream is created it will be emitted by the stream first.
+
+### domStream.mutation()
+Returns a pull-stream source of dom mutations from [pull-dom-mutants]()
 
 ## Install
 
@@ -53,7 +71,6 @@ pull-dom-driver was inspired by..
 ## See Also
 
 - [`noffle/common-readme`](https://github.com/noffle/common-readme)
-- ...
 
 ## License
 
