@@ -2,6 +2,7 @@
 
 > A pullstream "webdriver" for interacting with changes to the dom.
 
+[![Build Status](https://travis-ci.org/pietgeursen/pull-dom-driver.svg?branch=master)](https://travis-ci.org/pietgeursen/pull-dom-driver)
 When you're testing client side apps like [react](https://facebook.github.io/react/) or [inu](https://github.com/ahdinosaur/inu), finding and interacting with elements that appear dynamically is painful. pull-dom-driver uses a [pull-stream](https://github.com/ahdinosaur/inu) source of dom mutations from [pull-dom-mutants](http://pull-stream.github.io/#pull-dom-mutants) to `find(".list")` and `click("#go-button")` on elements once they're actually in the dom.  
 
 ## Usage
@@ -73,5 +74,4 @@ pull-dom-driver was inspired by..
 ## License
 
 MIT
-
 
