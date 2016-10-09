@@ -6,7 +6,6 @@ var window = require('global/window')
 module.exports = createDomStream
 
 function createDomStream (el) {
-
   return {
     find,
     click,

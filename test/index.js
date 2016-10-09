@@ -4,81 +4,81 @@ var document = require('global/document')
 
 var createDomStream = require('../')
 
-test('find emits elements that are already in the dom when the stream is created', function(t) {
+test('find emits elements that are already in the dom when the stream is created', function (t) {
   var root = document.createElement('div')
   var el = document.createElement('div')
   el.id = 'test'
   root.appendChild(el)
-  dom = createDomStream(root)
+  var dom = createDomStream(root)
   pull(
-    dom.find("#test"),
-    pull.drain((el)=>{
-      t.equal(el.id, 'test') 
+    dom.find('#test'),
+    pull.drain((el) => {
+      t.equal(el.id, 'test')
       t.end()
-      return false 
+      return false
     })
-  ) 
+  )
 })
 
-test('find emits elements that are added to the dom after the stream is created', function(t) {
+test('find emits elements that are added to the dom after the stream is created', function (t) {
   var root = document.createElement('div')
-  dom = createDomStream(root)
+  var dom = createDomStream(root)
   pull(
-    dom.find("#test"),
-    pull.drain((el)=>{
-      t.equal(el.id, 'test') 
+    dom.find('#test'),
+    pull.drain((el) => {
+      t.equal(el.id, 'test')
       t.end()
-      return false 
+      return false
     })
-  ) 
-  var el = document.createElement('div')
-  el.id = 'test'
-  root.appendChild(el)
-})
-
-test('click emits elements that are already in the dom when the stream is created', function(t) {
-  var root = document.createElement('div')
-  var el = document.createElement('div')
-  el.id = 'test'
-  root.appendChild(el)
-  dom = createDomStream(root)
-  pull(
-    dom.click("#test"),
-    pull.drain((el)=>{
-      t.equal(el.id, 'test') 
-      t.end()
-      return false 
-    })
-  ) 
-})
-
-test('click emits elements that are added to the dom after the stream is created', function(t) {
-  var root = document.createElement('div')
-  dom = createDomStream(root)
-  pull(
-    dom.click("#test"),
-    pull.drain((el)=>{
-      t.equal(el.id, 'test') 
-      t.end()
-      return false 
-    })
-  ) 
+  )
   var el = document.createElement('div')
   el.id = 'test'
   root.appendChild(el)
 })
 
-test('click calls the click method on the element', function(t) {
+test('click emits elements that are already in the dom when the stream is created', function (t) {
   var root = document.createElement('div')
-  dom = createDomStream(root)
-  pull(
-    dom.click("#test"),
-    pull.drain((el)=>{
-    })
-  ) 
   var el = document.createElement('div')
   el.id = 'test'
-  el.click = () => { 
+  root.appendChild(el)
+  var dom = createDomStream(root)
+  pull(
+    dom.click('#test'),
+    pull.drain((el) => {
+      t.equal(el.id, 'test')
+      t.end()
+      return false
+    })
+  )
+})
+
+test('click emits elements that are added to the dom after the stream is created', function (t) {
+  var root = document.createElement('div')
+  var dom = createDomStream(root)
+  pull(
+    dom.click('#test'),
+    pull.drain((el) => {
+      t.equal(el.id, 'test')
+      t.end()
+      return false
+    })
+  )
+  var el = document.createElement('div')
+  el.id = 'test'
+  root.appendChild(el)
+})
+
+test('click calls the click method on the element', function (t) {
+  var root = document.createElement('div')
+  var dom = createDomStream(root)
+  pull(
+    dom.click('#test'),
+    pull.drain((el) => {
+    })
+  )
+  var el = document.createElement('div')
+  el.id = 'test'
+  el.click = () => {
     t.ok(true, 'was clicked')
     t.end()
   }
