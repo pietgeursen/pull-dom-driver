@@ -1,6 +1,6 @@
 {
   "name": "pull-dom-driver",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A pullstream \"webdriver\" for interacting with changes to the dom.",
   "main": "index.js",
   "scripts": {
