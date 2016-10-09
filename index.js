@@ -1,10 +1,12 @@
 var pull = require('pull-stream')
 var many = require('pull-many')
 var domMutant = require('pull-dom-mutants')
+var window = require('global/window')
 
 module.exports = createDomStream
 
-function createDomStream (el, window) {
+function createDomStream (el) {
+
   return {
     find,
     click,

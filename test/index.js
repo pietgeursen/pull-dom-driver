@@ -1,7 +1,6 @@
 var test = require('tape')
 var pull = require('pull-stream')
 var document = require('global/document')
-var window = require('global/window')
 
 var createDomStream = require('../')
 
@@ -10,7 +9,7 @@ test('find emits elements that are already in the dom when the stream is created
   var el = document.createElement('div')
   el.id = 'test'
   root.appendChild(el)
-  dom = createDomStream(root, window)
+  dom = createDomStream(root)
   pull(
     dom.find("#test"),
     pull.drain((el)=>{
@@ -23,7 +22,7 @@ test('find emits elements that are already in the dom when the stream is created
 
 test('find emits elements that are added to the dom after the stream is created', function(t) {
   var root = document.createElement('div')
-  dom = createDomStream(root, window)
+  dom = createDomStream(root)
   pull(
     dom.find("#test"),
     pull.drain((el)=>{
@@ -42,7 +41,7 @@ test('click emits elements that are already in the dom when the stream is create
   var el = document.createElement('div')
   el.id = 'test'
   root.appendChild(el)
-  dom = createDomStream(root, window)
+  dom = createDomStream(root)
   pull(
     dom.click("#test"),
     pull.drain((el)=>{
@@ -55,7 +54,7 @@ test('click emits elements that are already in the dom when the stream is create
 
 test('click emits elements that are added to the dom after the stream is created', function(t) {
   var root = document.createElement('div')
-  dom = createDomStream(root, window)
+  dom = createDomStream(root)
   pull(
     dom.click("#test"),
     pull.drain((el)=>{
@@ -71,7 +70,7 @@ test('click emits elements that are added to the dom after the stream is created
 
 test('click calls the click method on the element', function(t) {
   var root = document.createElement('div')
-  dom = createDomStream(root, window)
+  dom = createDomStream(root)
   pull(
     dom.click("#test"),
     pull.drain((el)=>{

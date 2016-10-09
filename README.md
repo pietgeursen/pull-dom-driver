@@ -33,10 +33,10 @@ This will output
 ## API
 
 ### var createDomStream = require('pull-dom-driver')
-### createDomStream(rootElement, window)
-Takes the `rootElement` on which you'd like to obseve changes. `window` is required.
+### createDomStream(rootElement)
+Takes the `rootElement` on which you'd like to obseve changes.
 
-### var domStream = createDomStream(el, window)
+### var domStream = createDomStream(el)
 Returns an object with the following keys:
 - `subscribe` 
 - `find` 
