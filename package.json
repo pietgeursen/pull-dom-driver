@@ -4,7 +4,7 @@
   "description": "A pullstream \"webdriver\" for interacting with changes to the dom.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "browserify test/*.js | tape-run | tap-spec"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,17 @@
   "bugs": {
     "url": "https://github.com/pietgeursen/pull-dom-driver/issues"
   },
-  "homepage": "https://github.com/pietgeursen/pull-dom-driver#readme"
+  "homepage": "https://github.com/pietgeursen/pull-dom-driver#readme",
+  "dependencies": {
+    "pull-dom-mutants": "^1.0.1",
+    "pull-many": "^1.0.6",
+    "pull-stream": "^3.4.5"
+  },
+  "devDependencies": {
+    "browserify": "^13.1.0",
+    "global": "^4.3.1",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.2",
+    "tape-run": "^2.1.4"
+  }
 }
