@@ -84,3 +84,39 @@ test('click calls the click method on the element', function (t) {
   }
   root.appendChild(el)
 })
+
+test('find emits nested elements that are added to the dom after the stream is created', function (t) {
+  var root = document.createElement('div')
+  var el = document.createElement('div')
+  root.appendChild(el)
+  var dom = createDomStream(root)
+  pull(
+    dom.find('#test'),
+    pull.drain((el) => {
+      t.equal(el.id, 'test')
+      t.end()
+      return false
+    })
+  )
+  var el1 = document.createElement('div')
+  el.appendChild(el1)
+  el1.id = 'test'
+})
+
+test('click emits nested elements that are added to the dom after the stream is created', function (t) {
+  var root = document.createElement('div')
+  var el = document.createElement('div')
+  root.appendChild(el)
+  var dom = createDomStream(root)
+  pull(
+    dom.click('#test'),
+    pull.drain((el) => {
+      t.equal(el.id, 'test')
+      t.end()
+      return false
+    })
+  )
+  var el1 = document.createElement('div')
+  el.appendChild(el1)
+  el1.id = 'test'
+})

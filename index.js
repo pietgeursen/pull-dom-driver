@@ -1,7 +1,6 @@
 var pull = require('pull-stream')
 var many = require('pull-many')
 var domMutant = require('pull-dom-mutants')
-var window = require('global/window')
 
 module.exports = createDomStream
 
@@ -12,7 +11,7 @@ function createDomStream (el) {
     subscribe
   }
   function subscribe () {
-    return domMutant(el, window)
+    return domMutant(el, {subtree: true})
   }
   function find (selector, opts) {
     const newElements = pull(
